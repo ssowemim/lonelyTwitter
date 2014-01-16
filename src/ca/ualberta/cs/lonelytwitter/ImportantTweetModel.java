@@ -25,4 +25,13 @@ public class ImportantTweetModel extends LonleyTweetModel
 		
 	}
 
+	@Override
+	public Date getTimestamp()
+	{
+
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
 }
