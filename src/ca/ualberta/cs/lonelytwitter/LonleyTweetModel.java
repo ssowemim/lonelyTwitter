@@ -26,7 +26,21 @@ public class LonleyTweetModel{
 	
 		this.timestamp = timestamp;
 	}
+
+
+	public LonleyTweetModel(String text){
+
+		super();
+		this.text = text;
+		timestamp = new Date();
+	}
 	
+	public LonleyTweetModel(String text, Date timestamp){
+
+		super();
+		this.text = text;
+		this.timestamp = timestamp;
+	}
 	
 	
 }
