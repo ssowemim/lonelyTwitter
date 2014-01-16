@@ -5,7 +5,7 @@ import java.util.Date;
 
 public abstract class LonleyTweetModel{
 	private String text;
-	private Date timestamp;
+	protected Date timestamp;
 	
 	public String getText(){
 	
@@ -18,6 +18,7 @@ public abstract class LonleyTweetModel{
 	}
 	
 	public abstract Date getTimestamp();
+	public abstract String getTypeTweet();
 	
 	public void setTimestamp(Date timestamp){
 	
