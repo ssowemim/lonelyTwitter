@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,9 +25,12 @@ import android.widget.ListView;
 public class LonelyTwitterActivity extends Activity {
 
         private static final String FILENAME = "file.sav";
+        
         private EditText bodyText;
         private ListView oldTweetsList;
         protected ArrayAdapter<String>listAdapter;
+        public static final String LOG_TAG = "myLogs";
+        
         ArrayList<String> tweets;
         Gson gson = new Gson();
         
@@ -48,7 +52,7 @@ public class LonelyTwitterActivity extends Activity {
                                 String text = bodyText.getText().toString();
                                 NormalTweetModel ntm = new NormalTweetModel(text, new Date(System.currentTimeMillis()));
                                 String jsonString = gson.toJson(ntm);
-                                saveInFile(jsonString);
+                                saveInFile(jsonString + "\n");
                                 tweets.add(ntm.getText() + ntm.getTimestamp());
                                 
 //                                saveInFile(text, new Date(System.currentTimeMillis()));
@@ -82,11 +86,10 @@ public class LonelyTwitterActivity extends Activity {
                         FileInputStream fis = openFileInput(FILENAME);
                         BufferedReader in = new BufferedReader(new InputStreamReader(fis));     
                         String line = in.readLine();
-                        NormalTweetModel ntm1 = gson.fromJson(line, NormalTweetModel.class);
                         
                         while (line != null) {
                         	
-                        	
+                            NormalTweetModel ntm1 = gson.fromJson(line, NormalTweetModel.class);
                                tweets.add(ntm1.getText() + ntm1.getTimestamp());
                                line = in.readLine();
                         }
