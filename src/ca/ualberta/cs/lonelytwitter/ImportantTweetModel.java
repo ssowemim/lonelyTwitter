@@ -3,7 +3,7 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.Date;
 
 
-public class ImportantTweetModel extends LonleyTweetModel
+public class ImportantTweetModel extends AbstractTweetModel
 {
 
 	public ImportantTweetModel(String text, Date timestamp){
@@ -17,10 +17,10 @@ public class ImportantTweetModel extends LonleyTweetModel
 		super(text);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String getText(){
-	return "Important!" + super.getText();
-		
+		return "Important!" + super.getText();
+
 	}
 
 	@Override
@@ -35,6 +35,6 @@ public class ImportantTweetModel extends LonleyTweetModel
 		// TODO Auto-generated method stub
 		return "Important Tweet!";
 	}
-	
+
 
 }

@@ -3,16 +3,16 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.ArrayList;
 
 public class TweetListModel{
-	private static ArrayList<LonleyTweetModel> tweetList;
+	private static ArrayList<AbstractTweetModel> tweetList;
 
 	
-	public ArrayList<LonleyTweetModel> getTweetList(){
+	public ArrayList<AbstractTweetModel> getTweetList(){
 	
 		return tweetList;
 	}
 
 	
-	public void setTweetList(ArrayList<LonleyTweetModel> tweetList){
+	public void setTweetList(ArrayList<AbstractTweetModel> tweetList){
 	
 		this.tweetList = tweetList;
 	}
@@ -21,7 +21,7 @@ public class TweetListModel{
 	public TweetListModel(){
 
 		super();
-		tweetList = new ArrayList<LonleyTweetModel>();
+		tweetList = new ArrayList<AbstractTweetModel>();
 	}
 	
 	
