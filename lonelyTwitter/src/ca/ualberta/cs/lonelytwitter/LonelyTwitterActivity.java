@@ -80,6 +80,10 @@ public class LonelyTwitterActivity extends Activity {
 		return tweets;
 	}
 	
+	public ArrayAdapter getListViewAdapter() {
+		return (ArrayAdapter)adapter;
+	} 
+	
 	private void saveInFile(NormalTweetModel tweet) {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,

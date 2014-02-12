@@ -15,16 +15,34 @@ public class IntentReaderActivity extends Activity {
 	public static final int DOUBLE = 3;
 	
 	private String text;
+	private static final String defaultText="hello world"; 
 	private int mode;
 	
 	public String getText() {
 		return text;
 	}
 	
+	public String getDefaultText(){
+		return defaultText;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intent_reader);
+		
+		Intent intent = getIntent();
+		mode = intent.getIntExtra(TRANSFORM_KEY, NORMAL);
+		text = transformText(intent.getStringExtra(TEXT_KEY));
+		
+		TextView textView = (TextView) findViewById(R.id.intentText);
+	//	textView.setText((text == null || text.equals(""))?defaultText:text);
+	
+		if(text == null || text.equals("")){
+			text=defaultText;
+		}
+		
+		textView.setText(text);
 	}
 	
 	public String transformText(String text) {
