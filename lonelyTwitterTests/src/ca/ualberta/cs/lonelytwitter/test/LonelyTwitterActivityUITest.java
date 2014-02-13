@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.ViewAsserts;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,4 +44,30 @@ public class LonelyTwitterActivityUITest extends
 		textInput.setText(text);
 		((Button) activity.findViewById(ca.ualberta.cs.lonelytwitter.R.id.save)).performClick();
 	}
+	
+	public void testAddTweet() throws Throwable{
+		runTestOnUiThread(new Runnable()
+		{
+			
+			@Override
+			public void run(){
+				
+				String text = "Hi There #testing";
+			
+				// TODO Auto-generated method stub
+				@SuppressWarnings("rawtypes")
+				ArrayAdapter adapter = ((LonelyTwitterActivity) activity).getListViewAdapter();
+				int before = adapter.getCount();
+				makeTweet(text);
+				int after = adapter.getCount();
+				
+				
+				assertEquals("Tweet count should increase by one in array adapter",before+1, after);
+				Object lastObj = adapter.getItem(after-1);
+				assertEquals("Checking if last object in adapter is a NTM",true, lastObj instanceof NormalTweetModel);
+				assertEquals("Checking if text in adapter is correct", text, ((NormalTweetModel)lastObj).getText());
+			}
+		});
+	}
+
 }
